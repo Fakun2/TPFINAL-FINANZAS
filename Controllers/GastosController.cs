@@ -5,7 +5,6 @@ using TPFINALFINANZAS.Repositories;
 
 namespace TPFINALFINANZAS.Controllers
 {
-    // controlador para CRUD de gastos
     public class GastosController : Controller
     {
         private readonly IGastoRepositorio _gastoRepo;
@@ -65,11 +64,13 @@ namespace TPFINALFINANZAS.Controllers
             }
             var entidad = await _gastoRepo.ObtenerPorIdAsync(id);
             if (entidad is null) return NotFound();
+
             entidad.Descripcion = modelo.Descripcion;
             entidad.Monto = modelo.Monto;
             entidad.Fecha = modelo.Fecha;
             entidad.CategoriaId = modelo.CategoriaId;
             entidad.UsuarioId = modelo.UsuarioId;
+
             _gastoRepo.Actualizar(entidad);
             await _gastoRepo.GuardarAsync();
             return RedirectToAction(nameof(Index));
@@ -86,11 +87,21 @@ namespace TPFINALFINANZAS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
-            var entidad = await _gastoRepo.ObtenerPorIdAsync(id);
-            if (entidad is null) return NotFound();
-            _gastoRepo.Eliminar(entidad);
-            await _gastoRepo.GuardarAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var entidad = await _gastoRepo.ObtenerPorIdAsync(id);
+                if (entidad == null) return NotFound();
+
+                _gastoRepo.Eliminar(entidad);
+                await _gastoRepo.GuardarAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar gasto: {ex.Message}");
+                return BadRequest("Error interno al intentar eliminar el gasto.");
+            }
         }
 
         private async Task CargarCombos()

@@ -2,19 +2,18 @@
 @{
     ViewData["Title"] = "Eliminar gasto";
 }
-<h1>Eliminar gasto</h1>
-<h3>Confirmar eliminacion</h3>
-<div>
-    <h4>@Model.Descripcion</h4>
-    <dl class="row">
-        <dt class="col-sm-2">Monto</dt>
-        <dd class="col-sm-10">@Model.Monto.ToString("C")</dd>
-        <dt class="col-sm-2">Fecha</dt>
-        <dd class="col-sm-10">@Model.Fecha.ToShortDateString()</dd>
-    </dl>
+<div class="container mt-5">
+    <h2 class="fw-bold text-danger mb-4 text-center">Confirmar eliminación</h2>
+    <div class="alert alert-warning text-center shadow-sm">
+        <p class="mb-1">¿Seguro que deseas eliminar el gasto siguiente?</p>
+        <p class="fw-bold">@Model.Descripcion</p>
+        <p class="mb-0"><strong>Monto:</strong> @Model.Monto.ToString("C")</p>
+        <p><strong>Fecha:</strong> @Model.Fecha.ToShortDateString()</p>
+    </div>
+    <form asp-action="Eliminar" method="post" class="text-center mt-3">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger px-4">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary px-4 ms-2">Cancelar</a>
+    </form>
 </div>
-<form asp-action="EliminarConfirmado" method="post">
-    <input type="hidden" asp-for="Id" />
-    <input type="submit" value="Eliminar" class="btn btn-danger" />
-    <a asp-action="Index" class="btn btn-secondary">Volver</a>
-</form>
+

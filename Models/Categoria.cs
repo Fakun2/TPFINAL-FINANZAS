@@ -3,16 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TPFINALFINANZAS.Models
 {
-    // permite clasificar los gastos por ejemplo comida transporte salud
     public class Categoria
     {
         public int Id { get; set; }
 
-        [Required, StringLength(60)]
+        [Required(ErrorMessage = "Debe ingresar un nombre de categoría válido")]
+        [StringLength(50, ErrorMessage = "El nombre de categoría no puede superar los 50 caracteres")]
         public string Nombre { get; set; } = string.Empty;
 
-        public bool Activa { get; set; } = true; // bandera para activar o desactivar
+        [Display(Name = "Activa")]
+        public bool Activa { get; set; }
 
-        public ICollection<Gasto> Gastos { get; set; } = new List<Gasto>();
+        // Relación con gastos
+        public ICollection<Gasto>? Gastos { get; set; }
     }
 }

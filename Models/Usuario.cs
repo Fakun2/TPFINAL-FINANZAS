@@ -1,20 +1,20 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TPFINALFINANZAS.Models
 {
-    // representa una persona que registra gastos
     public class Usuario
     {
         public int Id { get; set; }
 
-        [Required, StringLength(80)]
-        public string Nombre { get; set; } = string.Empty; // nombre visible en listas
+        [Required(ErrorMessage = "Se requiere ingresar un nombre válido")]
+        [StringLength(100, ErrorMessage = "El nombre no puede superar los 100 caracteres")]
+        public string Nombre { get; set; } = string.Empty;
 
-        [EmailAddress, StringLength(120)]
-        public string? Email { get; set; } // email opcional
+        [Required(ErrorMessage = "Debe ingresar un correo electrónico")]
+        [EmailAddress(ErrorMessage = "Debe ingresar un correo electrónico correcto")]
+        public string Email { get; set; } = string.Empty;
 
-        // relacion uno a muchos  un usuario puede tener varios gastos
-        public ICollection<Gasto> Gastos { get; set; } = new List<Gasto>();
+        // Relación con gastos
+        public ICollection<Gasto>? Gastos { get; set; }
     }
 }

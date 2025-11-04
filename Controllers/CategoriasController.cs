@@ -4,7 +4,6 @@ using TPFINALFINANZAS.Repositories;
 
 namespace TPFINALFINANZAS.Controllers
 {
-    // controlador para CRUD de categorias
     public class CategoriasController : Controller
     {
         private readonly ICategoriaRepositorio _repo;
@@ -44,12 +43,16 @@ namespace TPFINALFINANZAS.Controllers
         {
             if (id != modelo.Id) return BadRequest();
             if (!ModelState.IsValid) return View(modelo);
+
             var entidad = await _repo.ObtenerPorIdAsync(id);
             if (entidad is null) return NotFound();
+
             entidad.Nombre = modelo.Nombre;
             entidad.Activa = modelo.Activa;
+
             _repo.Actualizar(entidad);
             await _repo.GuardarAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -64,11 +67,21 @@ namespace TPFINALFINANZAS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
-            var entidad = await _repo.ObtenerPorIdAsync(id);
-            if (entidad is null) return NotFound();
-            _repo.Eliminar(entidad);
-            await _repo.GuardarAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var entidad = await _repo.ObtenerPorIdAsync(id);
+                if (entidad == null) return NotFound();
+
+                _repo.Eliminar(entidad);
+                await _repo.GuardarAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar categoría: {ex.Message}");
+                return BadRequest("Error interno al intentar eliminar la categoría.");
+            }
         }
     }
 }

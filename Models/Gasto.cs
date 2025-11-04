@@ -4,25 +4,34 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TPFINALFINANZAS.Models
 {
-    // un gasto registrado por un usuario y asociado a una categoria
     public class Gasto
     {
         public int Id { get; set; }
 
-        [Required, StringLength(120)]
-        public string Descripcion { get; set; } = string.Empty; // texto corto sin puntuacion
+        [Required(ErrorMessage = "Debe ingresar una descripción del gasto")]
+        [StringLength(200, ErrorMessage = "La descripción no puede superar los 200 caracteres")]
+        public string Descripcion { get; set; } = string.Empty;
 
-        [Range(0.01, 100000000)]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Monto { get; set; } // importe del gasto
+        [Required(ErrorMessage = "Debe ingresar un monto válido")]
+        [Range(1, double.MaxValue, ErrorMessage = "El monto debe ser mayor a cero")]
+        public decimal Monto { get; set; }
 
+        [Required(ErrorMessage = "Debe ingresar una fecha válida")]
         [DataType(DataType.Date)]
-        public DateTime Fecha { get; set; } = DateTime.Today; // fecha del gasto
+        public DateTime Fecha { get; set; }
 
+        [Required(ErrorMessage = "Debe seleccionar una categoría")]
+        [Display(Name = "Categoría")]
         public int CategoriaId { get; set; }
+
+        [Required(ErrorMessage = "Debe seleccionar un usuario")]
+        [Display(Name = "Usuario")]
+        public int UsuarioId { get; set; }
+
+        [ForeignKey("CategoriaId")]
         public Categoria? Categoria { get; set; }
 
-        public int UsuarioId { get; set; }
+        [ForeignKey("UsuarioId")]
         public Usuario? Usuario { get; set; }
     }
 }
