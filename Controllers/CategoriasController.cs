@@ -8,7 +8,10 @@ namespace TPFINALFINANZAS.Controllers
     public class CategoriasController : Controller
     {
         private readonly ICategoriaRepositorio _repo;
-        public CategoriasController(ICategoriaRepositorio repo) { _repo = repo; }
+        public CategoriasController(ICategoriaRepositorio repo)
+        {
+            _repo = repo;
+        }
 
         public async Task<IActionResult> Index()
         {

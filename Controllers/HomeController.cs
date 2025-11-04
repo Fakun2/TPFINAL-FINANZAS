@@ -1,10 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
+using TPFINALFINANZAS.Repositories;
 
 namespace TPFINALFINANZAS.Controllers
 {
-    // controlador principal de la pagina de inicio
     public class HomeController : Controller
     {
-        public IActionResult Index() => View();
+        private readonly IGastoRepositorio _gastoRepo;
+
+        public HomeController(IGastoRepositorio gastoRepo)
+        {
+            _gastoRepo = gastoRepo;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var gastos = await _gastoRepo.ObtenerConTodoAsync();
+            var total = gastos.Sum(g => g.Monto);
+            var porCategoria = gastos
+                .GroupBy(g => g.Categoria?.Nombre)
+                .Select(c => new { Categoria = c.Key, Total = c.Sum(g => g.Monto) })
+                .OrderByDescending(c => c.Total)
+                .ToList();
+
+            ViewData["Total"] = total;
+            ViewData["PorCategoria"] = porCategoria;
+            return View();
+        }
     }
 }
+
+
