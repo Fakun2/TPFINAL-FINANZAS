@@ -8,7 +8,10 @@ namespace TPFINALFINANZAS.Controllers
     public class UsuariosController : Controller
     {
         private readonly IUsuarioRepositorio _repo;
-        public UsuariosController(IUsuarioRepositorio repo) { _repo = repo; }
+        public UsuariosController(IUsuarioRepositorio repo)
+        {
+            _repo = repo;
+        }
 
         public async Task<IActionResult> Index()
         {
