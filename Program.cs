@@ -5,6 +5,11 @@ using TPFINALFINANZAS.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// configurar idioma espanol
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo("es-AR");
+System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = new System.Globalization.CultureInfo("es-AR");
+
+
 // agregar controladores con vistas
 builder.Services.AddControllersWithViews();
 
