@@ -1,0 +1,28 @@
+@model IEnumerable<TPFINALFINANZAS.Models.Categoria>
+@{
+    ViewData["Title"] = "Categorias";
+}
+<h1>Categorias</h1>
+<p><a asp-action="Crear" class="btn btn-primary">Crear categoria</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Activa</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Nombre</td>
+        <td>@(item.Activa ? "Si" : "No")</td>
+        <td>
+            <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+            <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+@model TPFINALFINANZAS.Models.Categoria
+@{
+    ViewData["Title"] = "Eliminar categoria";
+}
+<h1>Eliminar categoria</h1>
+<h3>Confirmar eliminacion</h3>
+<div>
+    <h4>@Model.Nombre</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Activa</dt>
+        <dd class="col-sm-10">@Model.Activa</dd>
+    </dl>
+</div>
+<form asp-action="EliminarConfirmado" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

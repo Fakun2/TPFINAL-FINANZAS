@@ -1,0 +1,28 @@
+@model IEnumerable<TPFINALFINANZAS.Models.Usuario>
+@{
+    ViewData["Title"] = "Usuarios";
+}
+<h1>Usuarios</h1>
+<p><a asp-action="Crear" class="btn btn-primary">Crear usuario</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Nombre</td>
+        <td>@item.Email</td>
+        <td>
+            <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+            <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

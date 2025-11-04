@@ -1,0 +1,20 @@
+@model TPFINALFINANZAS.Models.Gasto
+@{
+    ViewData["Title"] = "Eliminar gasto";
+}
+<h1>Eliminar gasto</h1>
+<h3>Confirmar eliminacion</h3>
+<div>
+    <h4>@Model.Descripcion</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Monto</dt>
+        <dd class="col-sm-10">@Model.Monto.ToString("C")</dd>
+        <dt class="col-sm-2">Fecha</dt>
+        <dd class="col-sm-10">@Model.Fecha.ToShortDateString()</dd>
+    </dl>
+</div>
+<form asp-action="EliminarConfirmado" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
