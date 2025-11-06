@@ -2721,23 +2721,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FacuNosa\\.nuget\\packages\\": {},
+    "C:\\Users\\nosaf\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FacuNosa\\Desktop\\TPFINAL-FINANZAS\\TPFINALFINANZAS.csproj",
+      "projectUniqueName": "C:\\Users\\nosaf\\Desktop\\TP-FINANZAS-BACKEND\\TPFINAL-FINANZAS\\TPFINALFINANZAS.csproj",
       "projectName": "TPFINALFINANZAS",
-      "projectPath": "C:\\Users\\FacuNosa\\Desktop\\TPFINAL-FINANZAS\\TPFINALFINANZAS.csproj",
-      "packagesPath": "C:\\Users\\FacuNosa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FacuNosa\\Desktop\\TPFINAL-FINANZAS\\obj\\",
+      "projectPath": "C:\\Users\\nosaf\\Desktop\\TP-FINANZAS-BACKEND\\TPFINAL-FINANZAS\\TPFINALFINANZAS.csproj",
+      "packagesPath": "C:\\Users\\nosaf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nosaf\\Desktop\\TP-FINANZAS-BACKEND\\TPFINAL-FINANZAS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\FacuNosa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nosaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2746,6 +2746,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2802,7 +2803,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
