@@ -13,16 +13,16 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model)
-{
-    <tr>
-        <td>@item.Nombre</td>
-        <td>@(item.Activa ? "Si" : "No")</td>
-        <td>
-            <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
-            <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@(item.Activa ? "Si" : "No")</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
