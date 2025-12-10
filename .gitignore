@@ -1,0 +1,21 @@
+# Archivos y carpetas binarios
+[Bb]in/
+[Oo]bj/
+# Archivos específicos de Visual Studio/Rider
+*.user
+*.suo
+*.sln.docstates
+
+# Archivos de paquetes NuGet
+*.nupkg
+.nuget/
+# Carpetas y archivos de pruebas (TestResults)
+TestResults/
+[Tt]humbs.db
+# Archivos de EF Core Migraciones
+*.bak
+
+# Archivos de logs
+[Ll]ogs/
+# Archivos de caché de Hot Reload
+.vs/
