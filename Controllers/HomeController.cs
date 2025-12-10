@@ -22,11 +22,11 @@ namespace TPFINALFINANZAS.Controllers
                 .OrderByDescending(c => c.Total)
                 .ToList();
 
+            ViewData["Title"] = "FINANZAS"; // ✅ Agregado para que se muestre el título correcto
             ViewData["Total"] = total;
             ViewData["PorCategoria"] = porCategoria;
+
             return View();
         }
     }
 }
-
-
