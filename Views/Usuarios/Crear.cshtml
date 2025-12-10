@@ -6,12 +6,12 @@
 <form asp-action="Crear" method="post">
     <div class="form-group">
         <label asp-for="Nombre" class="control-label">Nombre</label>
-        <input asp-for="Nombre" class="form-control" />
+        <input asp-for="Nombre" class="form-control" placeholder="Ej: Juan Peréz" />
         <span asp-validation-for="Nombre" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Email" class="control-label">Email</label>
-        <input asp-for="Email" class="form-control" />
+        <input asp-for="Email" class="form-control" placeholder="Ej: nombre@mail.com" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group mt-2">
